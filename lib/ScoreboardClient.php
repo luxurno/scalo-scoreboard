@@ -45,6 +45,8 @@ class ScoreboardClient
             case StartMatchGlobalEvent::GLOBAL_EVENT:
                 $this->matches[$globalEvent->getPayload()] = $result;
                 break;
+            case EndMatchGlobalEvent::GLOBAL_EVENT:
+                unset($this->matches[$globalEvent->getPayload()]);
         }
     }
 

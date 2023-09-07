@@ -30,7 +30,7 @@ class ScoreboardClient
             StartMatchGlobalEvent::GLOBAL_EVENT =>
                 $this->scoreboardService->startMatch(),
             EndMatchGlobalEvent::GLOBAL_EVENT =>
-                $this->scoreboardService->endMatch(),
+                $this->scoreboardService->endMatch($this->matches, $globalEvent->getPayload()),
         };
 
         switch ($globalEvent::class) {

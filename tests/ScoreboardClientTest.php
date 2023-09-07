@@ -9,6 +9,7 @@ declare(strict_types=1);
 namespace Sportradar\Library\Scoreboard;
 
 use PHPUnit\Framework\TestCase;
+use Sportradar\Library\Scoreboard\Exception\MatchNotFoundException;
 
 class ScoreboardClientTest extends TestCase
 {
@@ -25,5 +26,15 @@ class ScoreboardClientTest extends TestCase
         $expected = '{"Mexico - Canada":{"home":0,"away":0}}';
 
         self::assertEquals($expected, json_encode($scoreboardClient->getMatches()));
+    }
+
+    public function testSimpleMatchEndMatchEventBeforeStart(): void
+    {
+        $scoreboardClient = new ScoreboardClient();
+
+        $this->expectException(MatchNotFoundException::class);
+
+        $message = 'EndMatch|Mexico - Canada';
+        $scoreboardClient->handle($message);
     }
 }

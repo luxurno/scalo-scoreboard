@@ -69,4 +69,20 @@ class ScoreboardClientTest extends TestCase
     }
 
 
+    public function testUpdateScoreForSimpleMatch(): void
+    {
+        $scoreboardClient = new ScoreboardClient();
+
+        $message = 'StartMatch|Mexico - Canada';
+        $scoreboardClient->handle($message);
+
+        $message = 'UpdateMatch|Mexico - Canada|UpdateScore|2:1';
+        $scoreboardClient->handle($message);
+
+        $expected = '{"Mexico - Canada":{"home":2,"away":1}}';
+
+        self::assertEquals($expected, json_encode($scoreboardClient->getMatches()));
+    }
+
+
 }

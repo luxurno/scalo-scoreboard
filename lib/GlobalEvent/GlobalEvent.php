@@ -13,6 +13,7 @@ abstract class GlobalEvent
     public function __construct(
         private readonly string $payload,
         private readonly string $eventType = '',
+        private readonly string $additionalInformation = '',
     ) { }
 
     public function getPayload(): string
@@ -23,5 +24,10 @@ abstract class GlobalEvent
     public function getEventType(): string
     {
         return $this->eventType;
+    }
+
+    public function getAdditionalInformation(): string
+    {
+        return $this->additionalInformation;
     }
 }

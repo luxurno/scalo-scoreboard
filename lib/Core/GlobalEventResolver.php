@@ -30,7 +30,10 @@ class GlobalEventResolver
         if (2 === count($data)) {
             return new $eventName($data[1]);
         }
+        if (3 === count($data)) {
+            return new $eventName($data[1], $data[2]);
+        }
 
-        return new $eventName($data[1], $data[2]);
+        return new $eventName($data[1], $data[2], $data[3]);
     }
 }

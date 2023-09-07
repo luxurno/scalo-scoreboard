@@ -12,6 +12,7 @@ use Sportradar\Library\Scoreboard\Exception\MatchNotFoundException;
 use Sportradar\Library\Scoreboard\Factory\ScoreboardFactoryInterface;
 use Sportradar\Library\Scoreboard\Strategy\AwayScoreStrategy;
 use Sportradar\Library\Scoreboard\Strategy\HomeScoreStrategy;
+use Sportradar\Library\Scoreboard\Strategy\UpdateScoreStrategy;
 
 readonly class ScoreboardService
 {
@@ -23,6 +24,7 @@ readonly class ScoreboardService
         $this->scoreboardContext = new ScoreboardContext();
         $this->scoreboardContext->addStrategy(new HomeScoreStrategy());
         $this->scoreboardContext->addStrategy(new AwayScoreStrategy());
+        $this->scoreboardContext->addStrategy(new UpdateScoreStrategy());
     }
 
     public function startMatch(): array

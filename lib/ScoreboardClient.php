@@ -34,7 +34,7 @@ class ScoreboardClient
                 $this->scoreboardService->updateMatch(
                     $this->matches[$globalEvent->getPayload()],
                     $globalEvent->getEventType(),
-                    $globalEvent->getPayload(),
+                    $globalEvent->getAdditionalInformation(),
                 ),
             EndMatchGlobalEvent::GLOBAL_EVENT =>
                 $this->scoreboardService->endMatch($this->matches, $globalEvent->getPayload()),

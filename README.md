@@ -1,8 +1,36 @@
 ### ScoreboardClient
 This class holds all running matches with pool solution
 
-### ScoreboardService
-This class holds single match operations
+```php 
+$scoreboardClient = new ScoreboardClient();
 
-### ScoreboardContext
-Handles match actions in scoreboard
+$message = 'StartMatch|Mexico - Canada';
+$scoreboardClient->handle($message);
+```
+Usage of event for HomeScore
+```php
+$message = 'UpdateMatch|Mexico - Canada|HomeScore';
+$scoreboardClient->handle($message);
+```
+
+Usage of event for AwayScore
+```php
+$message = 'UpdateMatch|Mexico - Canada|AwayScore';
+$scoreboardClient->handle($message);
+```
+
+Usage of event for UpdateScore
+```php
+$message = 'UpdateMatch|Mexico - Canada|AwayScore';
+$scoreboardClient->handle($message);
+```
+
+Receiving Scoreboard
+```php
+$scoreboardClient->getSortScoreboard()
+```
+
+Receiving Sorted Scoreboard
+```php
+$scoreboardClient->getMatches()
+```

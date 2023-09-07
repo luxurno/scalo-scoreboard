@@ -10,5 +10,17 @@ namespace Sportradar\Library\Scoreboard;
 
 class ScoreboardClient
 {
-    // Adding pool aka cache solution
+    public function __construct(
+        private array $matchesPool = [],
+    ) { }
+
+    public function handle(string $eventString): void
+    {
+        
+    }
+
+    public function getMatches(): array
+    {
+        return $this->matchesPool;
+    }
 }

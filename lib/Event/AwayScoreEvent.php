@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace Event;
+namespace Sportradar\Library\Scoreboard\Event;
 
 class AwayScoreEvent extends Event
 {

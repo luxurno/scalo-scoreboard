@@ -6,6 +6,8 @@
 
 declare(strict_types=1);
 
+namespace Sportradar\Library\Scoreboard\Model;
+
 class Name
 {
     public function __construct(

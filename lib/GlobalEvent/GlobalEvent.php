@@ -6,9 +6,18 @@
 
 declare(strict_types=1);
 
-namespace GlobalEvent;
+namespace Sportradar\Library\Scoreboard\GlobalEvent;
 
 abstract class GlobalEvent
 {
     public const GLOBAL_EVENT = self::class;
+
+    public function __construct(
+        private readonly string $payload,
+    ) { }
+
+    public function getPayload(): string
+    {
+        return $this->payload;
+    }
 }

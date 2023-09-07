@@ -6,8 +6,8 @@
 
 declare(strict_types=1);
 
-namespace Factory;
-use Score;
+namespace Sportradar\Library\Scoreboard\Factory;
+use Sportradar\Library\Scoreboard\Model\Score;
 
 interface ScoreboardFactoryInterface
 {

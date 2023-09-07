@@ -6,7 +6,7 @@
 
 declare(strict_types=1);
 
-namespace GlobalEvent;
+namespace Sportradar\Library\Scoreboard\GlobalEvent;
 
 class EndMatchGlobalEvent
 {

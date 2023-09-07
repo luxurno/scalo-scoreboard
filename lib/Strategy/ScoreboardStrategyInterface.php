@@ -6,8 +6,8 @@
 
 declare(strict_types=1);
 
-namespace Strategy;
-use IncomingEvent;
+namespace Sportradar\Library\Scoreboard\Strategy;
+use Sportradar\Library\Scoreboard\IncomingEvent;
 
 interface ScoreboardStrategyInterface
 {

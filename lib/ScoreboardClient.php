@@ -6,6 +6,8 @@
 
 declare(strict_types=1);
 
+namespace Sportradar\Library\Scoreboard;
+
 class ScoreboardClient
 {
     // Adding pool aka cache solution

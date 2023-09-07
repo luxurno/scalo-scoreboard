@@ -6,6 +6,8 @@
 
 declare(strict_types=1);
 
+namespace Sportradar\Library\Scoreboard;
+
 readonly class IncomingEvent
 {
     public function __construct(

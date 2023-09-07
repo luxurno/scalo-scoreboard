@@ -6,7 +6,9 @@
 
 declare(strict_types=1);
 
-use Strategy\ScoreboardStrategyInterface;
+namespace Sportradar\Library\Scoreboard;
+
+use Sportradar\Library\Scoreboard\Strategy\ScoreboardStrategyInterface;
 
 class ScoreboardContext
 {

@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace Sportradar\Library\Scoreboard;
 
+use Sportradar\Library\Scoreboard\Strategy\Exception\InvalidStrategyException;
 use Sportradar\Library\Scoreboard\Strategy\ScoreboardStrategyInterface;
 
 class ScoreboardContext
@@ -27,5 +28,7 @@ class ScoreboardContext
                 return $strategy->handle($scoreboard, $event);
             }
         }
+
+        throw new InvalidStrategyException('Unsupported strategy for IncomingEvent');
     }
 }

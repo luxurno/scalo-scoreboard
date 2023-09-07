@@ -10,6 +10,7 @@ namespace Sportradar\Library\Scoreboard;
 
 use PHPUnit\Framework\TestCase;
 use Sportradar\Library\Scoreboard\Exception\MatchNotFoundException;
+use Sportradar\Library\Scoreboard\Strategy\Exception\InvalidStrategyException;
 
 class ScoreboardClientTest extends TestCase
 {
@@ -68,7 +69,6 @@ class ScoreboardClientTest extends TestCase
         self::assertEquals($expected, json_encode($scoreboardClient->getMatches()));
     }
 
-
     public function testUpdateScoreForSimpleMatch(): void
     {
         $scoreboardClient = new ScoreboardClient();
@@ -84,5 +84,16 @@ class ScoreboardClientTest extends TestCase
         self::assertEquals($expected, json_encode($scoreboardClient->getMatches()));
     }
 
+    public function testEventThatIsNotSupported(): void
+    {
+        $scoreboardClient = new ScoreboardClient();
 
+        $message = 'StartMatch|Mexico - Canada';
+        $scoreboardClient->handle($message);
+
+        $this->expectException(InvalidStrategyException::class);
+
+        $message = 'UpdateMatch|Mexico - Canada|OtherScore|2:1';
+        $scoreboardClient->handle($message);
+    }
 }

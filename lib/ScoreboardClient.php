@@ -13,6 +13,7 @@ use Sportradar\Library\Scoreboard\Factory\ScoreboardFactory;
 use Sportradar\Library\Scoreboard\GlobalEvent\EndMatchGlobalEvent;
 use Sportradar\Library\Scoreboard\GlobalEvent\StartMatchGlobalEvent;
 use Sportradar\Library\Scoreboard\GlobalEvent\UpdateMatchGlobalEvent;
+use Sportradar\Library\Scoreboard\Model\Score;
 
 class ScoreboardClient
 {
@@ -48,6 +49,27 @@ class ScoreboardClient
             case EndMatchGlobalEvent::GLOBAL_EVENT:
                 unset($this->matches[$globalEvent->getPayload()]);
         }
+    }
+
+    public function getSortScoreboard(): array
+    {
+        $matches = [];
+        foreach ($this->matches as $matchName => $match) {
+            /** @var Score $homeScore */
+            $homeScore = $match['home'];
+            /** @var Score $awayScore */
+            $awayScore = $match['away'];
+
+            $matches[$matchName] = $homeScore->getScore() + $awayScore->getScore();
+        }
+        krsort($matches);
+
+        $returnMatches = [];
+        foreach ($matches as $matchName => $score) {
+            $returnMatches[$matchName] = $this->matches[$matchName];
+        }
+
+        return $returnMatches;
     }
 
     public function getMatches(): array

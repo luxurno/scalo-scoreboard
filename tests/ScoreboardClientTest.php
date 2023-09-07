@@ -108,4 +108,43 @@ class ScoreboardClientTest extends TestCase
         $message = 'UpdateMatch|Mexico - Canada|OtherScore|2:1';
         $scoreboardClient->handle($message);
     }
+
+    public function testSortScoreboard(): void
+    {
+        $scoreboardClient = new ScoreboardClient();
+
+        // Match no.1
+        $message = 'StartMatch|Mexico - Canada';
+        $scoreboardClient->handle($message);
+        $message = 'UpdateMatch|Mexico - Canada|UpdateScore|0:5';
+        $scoreboardClient->handle($message);
+
+        // Match no.2
+        $message = 'StartMatch|Spain - Brazil';
+        $scoreboardClient->handle($message);
+        $message = 'UpdateMatch|Spain - Brazil|UpdateScore|10:2';
+        $scoreboardClient->handle($message);
+
+        // Match no.3
+        $message = 'StartMatch|Germany - France';
+        $scoreboardClient->handle($message);
+        $message = 'UpdateMatch|Germany - France|UpdateScore|2:2';
+        $scoreboardClient->handle($message);
+
+        // Match no.4
+        $message = 'StartMatch|Uruguay - Italy';
+        $scoreboardClient->handle($message);
+        $message = 'UpdateMatch|Uruguay - Italy|UpdateScore|6:6';
+        $scoreboardClient->handle($message);
+
+        // Match no.5
+        $message = 'StartMatch|Argentina - Australia';
+        $scoreboardClient->handle($message);
+        $message = 'UpdateMatch|Argentina - Australia|UpdateScore|3:1';
+        $scoreboardClient->handle($message);
+
+        $expected = '{"Uruguay - Italy":{"home":6,"away":6},"Spain - Brazil":{"home":10,"away":2},"Mexico - Canada":{"home":0,"away":5},"Germany - France":{"home":2,"away":2},"Argentina - Australia":{"home":3,"away":1}}';
+
+        self::assertEquals($expected, json_encode($scoreboardClient->getSortScoreboard()));
+    }
 }

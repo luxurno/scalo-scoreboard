@@ -39,8 +39,7 @@ readonly class ScoreboardService
         array $scoreboard,
         string $eventType,
         string $payload,
-    ): array
-    {
+    ): array {
         $event = new IncomingEvent($payload);
 
         return $this->scoreboardContext->handle($scoreboard, $eventType, $event);

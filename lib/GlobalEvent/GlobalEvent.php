@@ -14,7 +14,8 @@ abstract class GlobalEvent
         private readonly string $payload,
         private readonly string $eventType = '',
         private readonly string $additionalInformation = '',
-    ) { }
+    ) {
+    }
 
     public function getPayload(): string
     {

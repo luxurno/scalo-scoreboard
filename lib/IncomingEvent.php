@@ -12,7 +12,8 @@ readonly class IncomingEvent
 {
     public function __construct(
         private string $payload,
-    ) { }
+    ) {
+    }
 
     public function getPayload(): string
     {

@@ -14,7 +14,8 @@ class Score implements JsonSerializable
 {
     public function __construct(
         private int $score = 0
-    ) { }
+    ) {
+    }
 
     public function updateScore(int $score): void
     {

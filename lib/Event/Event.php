@@ -12,7 +12,8 @@ abstract class Event
 {
     public function __construct(
         private readonly string $payload,
-    ) { }
+    ) {
+    }
 
     public function getPayload(): string
     {

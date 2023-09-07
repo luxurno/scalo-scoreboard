@@ -1,5 +1,5 @@
 {
-  "name": "luxurno/sportradar",
+  "name": "luxurno/scalo-scoreboard",
   "description": "Sport radar Scoreboard PHP Library",
   "require": {
     "php": ">=8.2.0"

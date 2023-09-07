@@ -12,6 +12,7 @@ use Sportradar\Library\Scoreboard\Core\GlobalEventResolver;
 use Sportradar\Library\Scoreboard\Factory\ScoreboardFactory;
 use Sportradar\Library\Scoreboard\GlobalEvent\EndMatchGlobalEvent;
 use Sportradar\Library\Scoreboard\GlobalEvent\StartMatchGlobalEvent;
+use Sportradar\Library\Scoreboard\GlobalEvent\UpdateMatchGlobalEvent;
 
 class ScoreboardClient
 {
@@ -29,11 +30,18 @@ class ScoreboardClient
         $result = match($globalEvent::class) {
             StartMatchGlobalEvent::GLOBAL_EVENT =>
                 $this->scoreboardService->startMatch(),
+            UpdateMatchGlobalEvent::GLOBAL_EVENT =>
+                $this->scoreboardService->updateMatch(
+                    $this->matches[$globalEvent->getPayload()],
+                    $globalEvent->getEventType(),
+                    $globalEvent->getPayload(),
+                ),
             EndMatchGlobalEvent::GLOBAL_EVENT =>
                 $this->scoreboardService->endMatch($this->matches, $globalEvent->getPayload()),
         };
 
         switch ($globalEvent::class) {
+            case UpdateMatchGlobalEvent::GLOBAL_EVENT:
             case StartMatchGlobalEvent::GLOBAL_EVENT:
                 $this->matches[$globalEvent->getPayload()] = $result;
                 break;

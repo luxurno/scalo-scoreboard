@@ -10,8 +10,6 @@ namespace Sportradar\Library\Scoreboard\Event;
 
 abstract class Event
 {
-    public const EVENT = self::class;
-
     public function __construct(
         private readonly string $payload,
     ) { }

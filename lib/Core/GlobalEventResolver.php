@@ -27,6 +27,10 @@ class GlobalEventResolver
             throw new \InvalidArgumentException('Invalid `GlobalEvent` payload schema');
         }
 
-        return new $eventName($data[1]);
+        if (2 === count($data)) {
+            return new $eventName($data[1]);
+        }
+
+        return new $eventName($data[1], $data[2]);
     }
 }

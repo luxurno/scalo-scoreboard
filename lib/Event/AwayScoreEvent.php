@@ -10,4 +10,5 @@ namespace Sportradar\Library\Scoreboard\Event;
 
 class AwayScoreEvent extends Event
 {
+    public const EVENT = 'AwayScore';
 }

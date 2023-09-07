@@ -37,4 +37,36 @@ class ScoreboardClientTest extends TestCase
         $message = 'EndMatch|Mexico - Canada';
         $scoreboardClient->handle($message);
     }
+
+    public function testHomeScoreForSimpleMatch(): void
+    {
+        $scoreboardClient = new ScoreboardClient();
+
+        $message = 'StartMatch|Mexico - Canada';
+        $scoreboardClient->handle($message);
+
+        $message = 'UpdateMatch|Mexico - Canada|HomeScore';
+        $scoreboardClient->handle($message);
+
+        $expected = '{"Mexico - Canada":{"home":1,"away":0}}';
+
+        self::assertEquals($expected, json_encode($scoreboardClient->getMatches()));
+    }
+
+    public function testAwayScoreForSimpleMatch(): void
+    {
+        $scoreboardClient = new ScoreboardClient();
+
+        $message = 'StartMatch|Mexico - Canada';
+        $scoreboardClient->handle($message);
+
+        $message = 'UpdateMatch|Mexico - Canada|AwayScore';
+        $scoreboardClient->handle($message);
+
+        $expected = '{"Mexico - Canada":{"home":0,"away":1}}';
+
+        self::assertEquals($expected, json_encode($scoreboardClient->getMatches()));
+    }
+
+
 }

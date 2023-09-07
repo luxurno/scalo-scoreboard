@@ -10,5 +10,5 @@ namespace Sportradar\Library\Scoreboard\Event;
 
 class HomeScoreEvent
 {
-
+    public const EVENT = 'HomeScore';
 }

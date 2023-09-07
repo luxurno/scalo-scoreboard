@@ -10,5 +10,5 @@ namespace Sportradar\Library\Scoreboard\Event;
 
 class UpdateScoreEvent
 {
-
+    public const EVENT = 'UpdateScore';
 }

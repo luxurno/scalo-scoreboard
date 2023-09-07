@@ -11,17 +11,11 @@ namespace Sportradar\Library\Scoreboard;
 readonly class IncomingEvent
 {
     public function __construct(
-        private string $type,
-        private string $value,
+        private string $payload,
     ) { }
 
-    public function getType(): string
+    public function getPayload(): string
     {
-        return $this->type;
-    }
-
-    public function getValue(): string
-    {
-        return $this->value;
+        return $this->payload;
     }
 }

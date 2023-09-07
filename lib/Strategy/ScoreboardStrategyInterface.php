@@ -12,5 +12,5 @@ use Sportradar\Library\Scoreboard\IncomingEvent;
 interface ScoreboardStrategyInterface
 {
     public function isValid(string $eventType): bool;
-    public function handle(IncomingEvent $event): void;
+    public function handle(array $scoreboard, IncomingEvent $event): array;
 }

@@ -14,12 +14,17 @@ class ScoreboardContext
 {
     private array $strategies = [];
 
-    public function handle(IncomingEvent $eventType): void
+    public function addStrategy(ScoreboardStrategyInterface $strategy): void
+    {
+        $this->strategies[] = $strategy;
+    }
+
+    public function handle(array $scoreboard, string $eventType, IncomingEvent $event): array
     {
         /** @var ScoreboardStrategyInterface $strategy */
         foreach ($this->strategies as $strategy) {
-            if ($strategy->isValid($eventType->getType())) {
-                $strategy->handle($eventType);
+            if ($strategy->isValid($eventType)) {
+                return $strategy->handle($scoreboard, $event);
             }
         }
     }

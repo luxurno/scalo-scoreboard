@@ -8,7 +8,9 @@ declare(strict_types=1);
 
 namespace Sportradar\Library\Scoreboard\Model;
 
-class Score
+use JsonSerializable;
+
+class Score implements JsonSerializable
 {
     public function __construct(
         private int $score = 0
@@ -25,6 +27,11 @@ class Score
     }
 
     public function getScore(): int
+    {
+        return $this->score;
+    }
+
+    public function jsonSerialize(): int
     {
         return $this->score;
     }

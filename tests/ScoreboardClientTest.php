@@ -22,8 +22,8 @@ class ScoreboardClientTest extends TestCase
         $message = 'EndMatch|Mexico - Canada';
         $scoreboardClient->handle($message);
 
-        $expected = '{"Mexico-Canada":"0:0"}';
+        $expected = '{"Mexico - Canada":{"home":0,"away":0}}';
 
-        self::assertEquals($expected, $scoreboardClient->getMatches());
+        self::assertEquals($expected, json_encode($scoreboardClient->getMatches()));
     }
 }

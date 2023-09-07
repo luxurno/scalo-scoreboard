@@ -10,4 +10,5 @@ namespace Sportradar\Library\Scoreboard\GlobalEvent;
 
 class StartMatchGlobalEvent extends GlobalEvent
 {
+    public const GLOBAL_EVENT = self::class;
 }

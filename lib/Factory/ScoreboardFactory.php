@@ -8,7 +8,7 @@ declare(strict_types=1);
 
 namespace Sportradar\Library\Scoreboard\Factory;
 
-use Score;
+use Sportradar\Library\Scoreboard\Model\Score;
 
 class ScoreboardFactory implements ScoreboardFactoryInterface
 {

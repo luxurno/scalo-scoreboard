@@ -8,6 +8,6 @@ declare(strict_types=1);
 
 namespace Event;
 
-class AwayScore extends Event
+class AwayScoreEvent extends Event
 {
 }

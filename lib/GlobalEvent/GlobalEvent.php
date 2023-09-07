@@ -6,9 +6,9 @@
 
 declare(strict_types=1);
 
-namespace Event;
+namespace GlobalEvent;
 
-class UpdateScore
+abstract class GlobalEvent
 {
-
+    public const GLOBAL_EVENT = self::class;
 }

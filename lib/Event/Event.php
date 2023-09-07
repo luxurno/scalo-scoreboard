@@ -11,4 +11,13 @@ namespace Event;
 abstract class Event
 {
     public const EVENT = self::class;
+
+    public function __construct(
+        private readonly string $payload,
+    ) { }
+
+    public function getPayload(): string
+    {
+        return $this->payload;
+    }
 }
